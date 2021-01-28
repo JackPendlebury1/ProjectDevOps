@@ -1,5 +1,3 @@
-from app import db, models
-from decouple import config
+from app import db
 
-db.drop_all()
 db.create_all()
