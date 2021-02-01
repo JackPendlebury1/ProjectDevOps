@@ -83,3 +83,27 @@ getting as close to 100% is ideal, showing all functions have been tested before
 **Jack Pendlebury**
 
 ## how to install
+
+```sh
+$ git clone https://github.com/JackPendlebury1/ProjectDevOps.git
+```
+
+```sh
+$ cd ProjectDevOps
+```
+
+```sh
+$ pip3 install virtualenv
+```
+
+```sh
+$ virtualenv venv
+```
+
+```sh
+$ source venv/bin/activate
+```
+
+```sh
+$ pip3 install -r requirements.txt
+```
