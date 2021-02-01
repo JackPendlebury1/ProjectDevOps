@@ -4,6 +4,16 @@
     </head>
     <h1>Login</h1>
     <body>
-
+        <div class='LoginForm'>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                {{ form.username.label }} {{ form.username }}<br></br>
+                {{ form.password.label }} {{ form.password }}<br></br>
+                {{ form.submit }}
+            </form>
+        </div>
+        <div>
+            <p>{{ message }}</p>
+        </div>  
     </body>
 </html>

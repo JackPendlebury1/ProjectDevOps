@@ -5,7 +5,13 @@
     <h1>Home</h1>
     <body>
         <div>
-            <p>321</p>
+            <button><a href="{{ url_for('login') }}">Login</a></button>
+            <button><a href="{{ url_for('register') }}">Register</a></button>
+        </div>
+        <div>
+            <p>
+                {{message}}
+            </p>
         </div>
     </body>
 </html>
