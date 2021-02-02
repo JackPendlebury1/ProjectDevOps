@@ -1,6 +1,7 @@
 from app import db
+from flask_login import UserMixin
 
-class Users(db.Model):
+class Users(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_first_name = db.Column(db.String(15))
     user_last_name = db.Column(db.String(20))
