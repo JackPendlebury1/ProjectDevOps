@@ -7,7 +7,7 @@ app = Flask(__name__,template_folder='../templates')
 bcrypt = Bcrypt(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE')
-app.config['SECRET_KEY'] = os.environ.get('SECRE1T')
+app.config['SECRET_KEY'] = os.environ.get('SECRET')
 
 db = SQLAlchemy(app)
 
