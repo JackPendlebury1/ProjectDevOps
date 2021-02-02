@@ -25,7 +25,7 @@ def login():
                 login_user(getPerson)
                 return redirect(url_for('user_home'))
             else:
-                return render_template("login.html",form=form ,message='not logged in')
+                return render_template("login.html", form=form ,message='not logged in')
     return render_template('login.html', form=form)
 
 @app.route('/register', methods=['GET','POST'])
@@ -51,3 +51,24 @@ def register():
 @login_required
 def user_home():
     return render_template('user_home.html', current_user=current_user)
+
+
+@app.route('/user/add_song', methods=['GET', 'POST'])
+@login_required
+def user_add_song():
+    form = SongForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            add_song = Songs(
+                song_name = form.name.data,
+                song_artist = form.artist.data,
+                song_genre = form.genre.data,
+                song_release_date = form.release_date.data,
+                song_length = form.length.data,
+                owner_id = current_user.id
+            )
+            db.session.add(add_song)
+            db.session.commit()
+            return redirect(url_for('user_home'))
+
+    return render_template('add_song.html', form=form, message=form.errors)
