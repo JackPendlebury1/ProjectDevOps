@@ -1,8 +1,14 @@
 from flask import render_template, redirect, url_for, request
-from app import app, db, bcrypt
+from app import app, db, bcrypt, login_manager
 from app.models import *
 from app.forms import *
+from flask_login import login_required, logout_user, current_user, login_user
 
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Users.query.get(user_id)
 
 @app.route('/', methods=['GET','POST'])
 def home():
@@ -13,12 +19,11 @@ def login():
     form = LoginForm()
     if request.method == 'POST':
         if form.validate_on_submit():
-            
             getPerson = Users.query.filter_by(user_username=form.username.data).first()
             password = form.password.data
-
             if bcrypt.check_password_hash(getPerson.user_password, password):
-                return redirect(url_for('home'))
+                login_user(getPerson)
+                return redirect(url_for('user_home'))
             else:
                 return render_template("login.html",form=form ,message='not logged in')
     return render_template('login.html', form=form)
@@ -40,3 +45,9 @@ def register():
             return redirect(url_for('login'))
 
     return render_template('register.html', form=form, message=form.errors)
+
+
+@app.route('/user/home', methods=['GET'])
+@login_required
+def user_home():
+    return render_template('user_home.html', current_user=current_user)
