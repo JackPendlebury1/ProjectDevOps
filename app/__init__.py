@@ -9,7 +9,7 @@ app = Flask(__name__,template_folder='../templates')
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE')
-app.config['SECRET_KEY'] = 'THISISNOTASECRETANYMORE'
+app.config['SECRET_KEY'] = getenv('SECRET')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 
 bcrypt = Bcrypt(app)
