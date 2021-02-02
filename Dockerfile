@@ -1,4 +1,4 @@
-FROM Python:3.6.9-alpine
+FROM python:3.6.9-alpine
 WORKDIR /project
 ADD . /project
 RUN pip3 install -r requirements.txt
