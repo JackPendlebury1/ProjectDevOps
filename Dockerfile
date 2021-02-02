@@ -1,4 +1,4 @@
-FROM python:3.6.9-alpine
+FROM python:3.6-onbuild
 WORKDIR /project
 ADD . /project
 RUN pip install -r requirements.txt
