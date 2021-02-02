@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from decouple import config
 import os
 from flask_bcrypt import Bcrypt
 
