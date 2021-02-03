@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Update User</title>
+    </head>
+    <h1>Update User</h1>
+    <body>
+        <div class='UpdateUserForm'>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                {{ form.username.label }} {{ form.username }}<br></br>
+                {{ form.password.label }} {{ form.password }}<br></br>
+                {{ form.first_name.label }} {{ form.first_name }}<br></br>
+                {{ form.last_name.label }} {{ form.last_name }}<br></br>
+                {{ form.email.label }} {{ form.email }}<br></br>
+                {{ form.submit }}
+            </form>
+        </div>
+        <div>
+            <p>{{ message }}</p>
+        </div>  
+    </body>
+</html>
