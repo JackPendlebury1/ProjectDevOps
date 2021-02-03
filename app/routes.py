@@ -77,3 +77,36 @@ def user_add_song():
 def logout():
 	logout_user()
 	return redirect(url_for('login'))
+
+@app.route("/user/update/song/<song_id>", methods=['GET', 'POST'])
+@login_required
+def update_song(song_id):
+    song = Songs.query.filter_by(id=song_id).first()
+    form = SongUpdateForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            song.song_name = form.name.data,
+            song.song_artist = form.artist.data,
+            song.song_genre = form.genre.data,
+            song.song_release_date = form.release_date.data,
+            song.song_length = form.length.data,
+            song.owner_id = current_user.id
+            db.session.commit()
+        return redirect(url_for('user_home'))
+    return render_template('update_song.html', form=form, message=form.errors)
+
+@app.route("/user/update/user/<user_id>", methods=['GET', 'POST'])
+@login_required
+def update_user(user_id):
+    user = Users.query.filter_by(id=user_id).first()
+    form = UserUpdateForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            user.user_first_name = form.first_name.data,
+            user.user_last_name = form.last_name.data,
+            user.user_username = form.username.data,
+            user.user_password = bcrypt.generate_password_hash(form.password.data),
+            user.user_email = form.email.data
+            db.session.commit()
+        return redirect(url_for('user_home'))
+    return render_template('update_user.html', form=form, message=form.errors)
