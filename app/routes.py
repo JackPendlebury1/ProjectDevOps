@@ -72,3 +72,8 @@ def user_add_song():
             return redirect(url_for('user_home'))
 
     return render_template('add_song.html', form=form, message=form.errors)
+
+@app.route("/logout")
+def logout():
+	logout_user()
+	return redirect(url_for('login'))
