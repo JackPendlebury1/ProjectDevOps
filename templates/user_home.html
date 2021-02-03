@@ -8,7 +8,11 @@
                 <p>{{ current_user.user_first_name }}<br></p>
                 <p>{{ current_user.user_last_name }}<br></p>
                 <p>{{ current_user.user_username }}<br></p>
-                <p>{{ current_user.songs }}</p>
+                {% for song in current_user.songs %}
+                    <p>Song id : </p><p>{{ song.id }}</p>
+                    <p>Song name : </p><p>{{ song.song_name }}</p>
+                    <p>Artist : </p><p>{{ song.song_artist }}</p>
+                {% endfor %}
         </div>
         <div>
             <button><a href="{{ url_for('user_add_song') }}">Add Song</a></button>
