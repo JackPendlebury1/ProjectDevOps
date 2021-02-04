@@ -39,7 +39,7 @@ class SongUpdateForm(FlaskForm):
     release_date = StringField('Release Date', validators=[DataRequired()])
     length = IntegerField('Song Length', validators=[DataRequired()])
 
-    submit = SubmitField('Add Song')
+    submit = SubmitField('Update Song')
 
 class UserUpdateForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(2,30)])
@@ -53,4 +53,4 @@ class UserUpdateForm(FlaskForm):
             if user:
                 raise ValidationError('This email is already registered do you have an account?')
 
-    submit = SubmitField('Register')
+    submit = SubmitField('Update')

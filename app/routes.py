@@ -26,6 +26,8 @@ def login():
                 return redirect(url_for('user_home'))
             else:
                 return render_template("login.html", form=form ,message='not logged in')
+        else:
+            return render_template("login.html", form=form ,message='not logged in')
     return render_template('login.html', form=form)
 
 @app.route('/register', methods=['GET','POST'])
