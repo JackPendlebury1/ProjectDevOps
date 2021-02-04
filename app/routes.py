@@ -95,10 +95,10 @@ def update_song(song_id):
         return redirect(url_for('user_home'))
     return render_template('update_song.html', form=form, message=form.errors)
 
-@app.route("/user/update/user/<user_id>", methods=['GET', 'POST'])
+@app.route("/user/update/user/", methods=['GET', 'POST'])
 @login_required
-def update_user(user_id):
-    user = Users.query.filter_by(id=user_id).first()
+def update_user():
+    user = Users.query.filter_by(id=current_user.id).first()
     form = UserUpdateForm()
     if request.method == 'POST':
         if form.validate_on_submit():
@@ -110,3 +110,19 @@ def update_user(user_id):
             db.session.commit()
         return redirect(url_for('user_home'))
     return render_template('update_user.html', form=form, message=form.errors)
+
+@app.route("/user/delete/user/", methods=['GET', 'POST'])
+@login_required
+def delete_user():
+    user = Users.query.filter_by(id=current_user.id).first()
+    db.session.delete(user)
+    db.session.commit()
+    return redirect(url_for('user_home'))
+
+@app.route("/user/delete/song/<song_id>", methods=['GET', 'POST'])
+@login_required
+def delete_song(song_id):
+    song = Songs.query.filter_by(id=song_id).first()
+    db.session.delete(song)
+    db.session.commit()
+    return redirect(url_for('user_home'))

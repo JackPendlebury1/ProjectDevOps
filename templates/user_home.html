@@ -5,17 +5,26 @@
     <h1>User1</h1>
     <body>
         <div>
-                <p>{{ current_user.user_first_name }}<br></p>
-                <p>{{ current_user.user_last_name }}<br></p>
-                <p>{{ current_user.user_username }}<br></p>
+                <p>Firstname : {{ current_user.user_first_name }}<br></p>
+                <p>Lastname : {{ current_user.user_last_name }}<br></p>
+                <p>Username : {{ current_user.user_username }}<br></p>
+                <br>
                 {% for song in current_user.songs %}
-                    <p>Song id : </p><p>{{ song.id }}</p>
-                    <p>Song name : </p><p>{{ song.song_name }}</p>
-                    <p>Artist : </p><p>{{ song.song_artist }}</p>
+                    <p>--------------------------------</p>
+                    <p>Song id : {{ song.id }}</p>
+                    <p>Song name : {{ song.song_name }}</p>
+                    <p>Artist :  {{ song.song_artist }}</p>
+                    <p>--------------------------------</p>
                 {% endfor %}
         </div>
         <div>
             <button><a href="{{ url_for('user_add_song') }}">Add Song</a></button>
+            <br>
+            <br>
+            <button><a href="{{ url_for('update_user') }}">update Profile</a></button>
+            <br>
+            <br>
+            <button><a href="{{ url_for('delete_user') }}">delete Profile</a></button>
         </div>
         <div>
             <p>
