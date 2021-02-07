@@ -2,7 +2,7 @@
     <head>
         <title>User</title>
     </head>
-    <h1>User1</h1>
+    <h1>User</h1>
     <body>
         <div>
                 <p>Firstname : {{ current_user.user_first_name }}<br></p>
@@ -14,6 +14,11 @@
                     <p>Song id : {{ song.id }}</p>
                     <p>Song name : {{ song.song_name }}</p>
                     <p>Artist :  {{ song.song_artist }}</p>
+                    <p>Length : {{ song.song_length }}</p>
+                    <br>
+                    <button><a href="{{ url_for('delete_song', song_id = song.id)}}">Delete Song</a></button>
+                    <br>
+                    <button><a href="{{ url_for('update_song', song_id = song.id) }}">Update Song</a></button>
                     <p>--------------------------------</p>
                 {% endfor %}
         </div>
