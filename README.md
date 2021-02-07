@@ -53,31 +53,43 @@ this project should include:
 
 - allow the user to view their songs
 
+## method
+
+**how i choose to go about this project was a simple approach i would get the very basics working, so displaying templates, i would then build on that and then move into functionality for that template. With my login page as an example what i did was first built the most simple route i could think of which would just display the login template, from this i then build a simple form which allowed the user to enter their details, i then gave the form to the template, and then added the extra functionality to the login route.**
+
 ## Database ERD
 
-![ERD]()
+![ERD](https://i.imgur.com/LN7SZ02.png)
 
 ## Project Management
 for this trello was what i used for this. This allowed me to follow a clear plan to streamline the development process in an agile way throught the project, moving tickets 
 to the relevent position in the development stage
 
-![Trello]()
+![Trello](https://i.imgur.com/bwyNVOB.png)
 
 ## CI
+for cd i wanted to go beyond the spec, i know this isnt good pratice but i was very interested in jenkins and i didn't like leaving it unfinished. I have 2 jenkins jobs one that firsts tests the application with pytest, takes the coverage file and creates that into an artifact. This is all done continiously with a webhook to jenkins from github. the second job is to dockerize my application and run it within a container. I thought this step was needed because the job wouldn't finish there for not showing the true progress of the application.
 for the CI server i used Jenkins this is what the pipline that i have setup looks like
 
-![CI]()
+![CI](https://i.imgur.com/hlwRERz.png)
 
 ## Testing
 For testing I used pytest to provide me test coverage of the flask application when conducting unit testing, 
 for intergration testing i will be using selenium.
 getting as close to 100% is ideal, showing all functions have been tested before being deployed.
+automated testing whenever pushed from github is useful and allows the version to fail if the testing also fails which would stop the next job, deploying the website to also stop.
 
-![Pytest]()
+![Pytest](https://i.imgur.com/odf5QYM.png)
 
 ## Risk Assessment
 
+![Risk Assessment](https://i.imgur.com/QfTim7r.png)
+
 ## Future Improvements
+- uploading images
+- UI changes
+- css and javascript to improve UX
+- to split the application up further for readablity and maintainablity 
 
 ## Author
 **Jack Pendlebury**
